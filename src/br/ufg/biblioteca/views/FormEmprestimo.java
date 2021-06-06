@@ -7,6 +7,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+    Classe que representa o formulario de emprestimos, onde 
+    ocorre a atribuicao dos livros, alunos e funcionarios.
+ */
+
 public class FormEmprestimo extends Formulario {
 
     ArrayList<String> nomesLivros = new ArrayList<String>();
@@ -20,11 +25,22 @@ public class FormEmprestimo extends Formulario {
     Date inicio;
     Date fim;
 
+    /**
+     *
+     * @param nomeLivro Nome do livro
+     * @param nomeAluno Nome do aluno que quer o emprestimo
+     * @param nomeFuncionario Nome do funcionario que fez o emprestimo
+     * @param inicio Data que foi realizada o emprestimo
+     * @param fim Data para entregar o livro ou exemplar
+     */
+
     public FormEmprestimo(Lista lista, String[] atributos) {
         super(lista, atributos);
     }
 
-    // Checa se as informacoes inseridas sao validas
+    /**
+     * Checa se as informacoes inseridas sao validas
+     */
     boolean validateText() {
 
         boolean ok = true;
@@ -43,35 +59,46 @@ public class FormEmprestimo extends Formulario {
         nomeAluno = atributosText.get(1).getText();
         nomeFuncionario = atributosText.get(2).getText();
 
-        // Checa se o livro inserido esta cadastrado
+        /**
+         * Checa se o livro inserido esta cadastrado
+         */
         if(!nomesLivros.contains(nomeLivro)) {
             atributosErrorLabel.get(0).setText("Livro nao cadastrado");
             ok = false;
         }
-        // Checa se o livro inserido esta disponivel
+        /**
+         * Checa se o livro inserido esta disponivel
+         */
         else if(Data.livros.get(nomesLivros.indexOf(nomeLivro)).getQuantidade() <= 0) {
             atributosErrorLabel.get(0).setText("Livro indisponivel");
             ok = false;
         }
-        // Checa se o aluno inserido esta cadastrado
+        /**
+         * Checa se o aluno inserido esta cadastrado
+         */
         if(!nomesAlunos.contains(nomeAluno)) {
             atributosErrorLabel.get(1).setText("Aluno nao cadastrado");
             ok = false;
         }
-        // Checa se o funcionario inserido esta cadastrado
+        /**
+         * Checa se o funcionario inserido esta cadastrado
+         */
         if(!nomesFuncionarios.contains(nomeFuncionario)) {
             atributosErrorLabel.get(2).setText("Funcionario nao cadastrado");
             ok = false;
         }
-        
-        // Checa se a data inserida esta no formato correto
+        /**
+         * Checa se a data de inicio inserida esta no formato correto
+         */
         try {
             inicio = new SimpleDateFormat("dd/MM").parse(atributosText.get(3).getText());
         } catch (ParseException e) {
             atributosErrorLabel.get(3).setText("Insira uma data (dd/MM)");
             ok = false;
         }
-        // Checa se a data inserida esta no formato correto
+        /**
+         * Checa se a data para entregar inserida esta no formato correto
+         */
         try {
             fim = new SimpleDateFormat("dd/MM").parse(atributosText.get(4).getText());
         } catch (ParseException e) {
@@ -82,7 +109,9 @@ public class FormEmprestimo extends Formulario {
         return ok;
     }
 
-    // Cria um novo emprestimo e o adiciona na lista global (em Data)
+    /**
+     * Cria um novo emprestimo e o adiciona na lista global (em Data)
+     */
     void createData(Object[] data) {
         int indexLivro = nomesLivros.indexOf(nomeLivro);
         int indexAluno = nomesAlunos.indexOf(nomeAluno);

@@ -10,6 +10,9 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 
+/**
+ * Uma classe que inicializa uma lista na aplicacao.
+ */
 public class Lista extends JFrame {
 
     DefaultTableModel tableModel;
@@ -17,10 +20,15 @@ public class Lista extends JFrame {
     JTextField searchTextField;
     Lista essaLista = this;
     String classe;
-    
+    /**
+     * @param classe Classe da lista
+     * @param nome Nome da lista
+     */
     public Lista(String classe, String nome, String[] colunas, Object[][] data) {
 
-        // Inicializando a nova janela e o panel principal
+        /**
+         * Inicializando a nova janela e o panel principal
+         */
         super(nome);
         this.classe = classe;
         setMinimumSize(new Dimension(450,450));
@@ -28,7 +36,9 @@ public class Lista extends JFrame {
         JPanel listaPanel = new JPanel();
         listaPanel.setLayout(new BoxLayout(listaPanel, BoxLayout.Y_AXIS));
 
-        // Fazendo a tabela
+        /**
+         * Fazendo a tabela
+         */
         tableModel = new DefaultTableModel(data, colunas);
 
         sorter = new TableRowSorter<DefaultTableModel>(tableModel);
@@ -42,7 +52,9 @@ public class Lista extends JFrame {
         barraRolagem.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 
 
-        // Botões e opções
+        /**
+         * Botões e opções
+         */
         JPanel toolsPanel = new JPanel();
         toolsPanel.setMaximumSize(new Dimension(Short.MAX_VALUE, 20));
         toolsPanel.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 20));
@@ -59,7 +71,9 @@ public class Lista extends JFrame {
         addRowButton.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // Abre o formulario de cada classe de acordo com o atributo
+                    /**
+                     * Abre o formulario de cada classe de acordo com o atributo
+                     */
                     if(classe.equals("Livro"))
                         new FormLivro(essaLista, colunas);
                     else if(classe.equals("Aluno"))
@@ -88,7 +102,9 @@ public class Lista extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     if(tabela.getSelectedRow() != -1) {
                         int confirm = JOptionPane.showConfirmDialog(null, "Deseja remover a linha selecionada?", "Confirmar", JOptionPane.YES_NO_OPTION);
-                        // Remove a linha selecionada e os dados da lista da classe
+                        /**
+                         * Remove a linha selecionada e os dados da lista da classe
+                         */
                         if(confirm == JOptionPane.YES_OPTION) {
                             int row = sorter.convertRowIndexToModel(tabela.getSelectedRow());
                             tableModel.removeRow(row);
@@ -109,7 +125,9 @@ public class Lista extends JFrame {
                                 Data.emprestimos.remove(row);
                             }
                             try {
-                                // Escreve a mudanca (remocao) realizada
+                                /**
+                                 * Escreve a mudanca realizada (remocao)
+                                 */
                                 Data.saveData();
                             } catch (IOException e1) {
                                 e1.printStackTrace();
@@ -124,7 +142,9 @@ public class Lista extends JFrame {
         toolsPanel.add(addRowButton);
         toolsPanel.add(removeRowButton);
 
-        // Barra de pesquisa
+        /**
+         * Barra de pesquisa
+         */
         JPanel searchPanel = new JPanel();
         searchPanel.setBorder(BorderFactory.createEmptyBorder(0,20,10,20));
         searchPanel.setLayout(new BoxLayout(searchPanel, BoxLayout.X_AXIS));
@@ -154,14 +174,18 @@ public class Lista extends JFrame {
         searchPanel.add(Box.createHorizontalStrut(5));
         searchPanel.add(searchTextField);
 
-        // Adicionando os componentes e o painel na janela principal
+        /**
+         * Adicionando os componentes e o painel na janela principal
+         */
         listaPanel.add(toolsPanel);
         listaPanel.add(searchPanel);
         listaPanel.add(barraRolagem);
 
         add(listaPanel);
         
-        // Preparando a janela principal
+        /**
+         * Preparando a janela principal
+         */
         setSize(450,450);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -169,7 +193,9 @@ public class Lista extends JFrame {
         start();
     }
 
-    // Inicializa a lista, adicionando as linhas de acordo com os dados das listas de Data
+    /**
+     * Inicializa a lista, adicionando as linhas de acordo com os dados das listas de Data
+     */
     private void start() {
 
         tableModel.setRowCount(0);
@@ -208,7 +234,9 @@ public class Lista extends JFrame {
         } 
     }
 
-    // Abre/Reabre a janela com as configuracoes originais
+    /**
+     *  Abre/Reabre a janela com as configuracoes originais
+     */
     public void open() {
         start();
         sorter.setSortKeys(null);
@@ -218,7 +246,9 @@ public class Lista extends JFrame {
         setVisible(true);
     }
 
-    // Abre a janela ou a foca se ja estiver aberta
+    /**
+     * Abre a janela ou a foca se ja estiver aberta
+     */
     public void requestOpen() {
         if(!isVisible()) {
             open();
@@ -229,7 +259,9 @@ public class Lista extends JFrame {
         }
     }
 
-    // Metodo para realizar a filtragem na barra de pesquisa
+    /**
+     * Metodo para realizar a filtragem na barra de pesquisa
+     */
     private void newFilter(int column) {
         RowFilter<DefaultTableModel, Object> rf = null;
         try {
