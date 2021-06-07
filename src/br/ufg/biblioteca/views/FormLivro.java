@@ -16,8 +16,11 @@ public class FormLivro extends Formulario {
      */
     ArrayList<String> nomesAutores = new ArrayList<String>();
     String nomeAutor;
+
     /**
-     * @param nomeAutor Nome do autor do livro em questao
+     *
+     * @param lista
+     * @param atributos
      */
     public FormLivro(Lista lista, String[] atributos) {
         super(lista, atributos);

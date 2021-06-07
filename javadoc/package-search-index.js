@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"br.ufg.biblioteca"},{"l":"br.ufg.biblioteca.entities"},{"l":"br.ufg.biblioteca.exceptions"},{"l":"br.ufg.biblioteca.views"}]

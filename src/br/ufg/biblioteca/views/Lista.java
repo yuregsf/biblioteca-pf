@@ -20,9 +20,13 @@ public class Lista extends JFrame {
     JTextField searchTextField;
     Lista essaLista = this;
     String classe;
+
     /**
-     * @param classe Classe da lista
-     * @param nome Nome da lista
+     *
+     * @param classe
+     * @param nome
+     * @param colunas
+     * @param data
      */
     public Lista(String classe, String nome, String[] colunas, Object[][] data) {
 

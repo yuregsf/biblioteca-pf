@@ -11,7 +11,6 @@ import java.util.ArrayList;
     Classe que representa o formulario de emprestimos, onde 
     ocorre a atribuicao dos livros, alunos e funcionarios.
  */
-
 public class FormEmprestimo extends Formulario {
 
     ArrayList<String> nomesLivros = new ArrayList<String>();
@@ -27,13 +26,9 @@ public class FormEmprestimo extends Formulario {
 
     /**
      *
-     * @param nomeLivro Nome do livro
-     * @param nomeAluno Nome do aluno que quer o emprestimo
-     * @param nomeFuncionario Nome do funcionario que fez o emprestimo
-     * @param inicio Data que foi realizada o emprestimo
-     * @param fim Data para entregar o livro ou exemplar
+     * @param lista
+     * @param atributos
      */
-
     public FormEmprestimo(Lista lista, String[] atributos) {
         super(lista, atributos);
     }
