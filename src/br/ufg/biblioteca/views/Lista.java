@@ -63,7 +63,7 @@ public class Lista extends JFrame {
         toolsPanel.setMaximumSize(new Dimension(Short.MAX_VALUE, 20));
         toolsPanel.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 20));
 
-        ImageIcon plusIcon = new ImageIcon(getClass().getClassLoader().getResource("plusIcon.png"));
+        ImageIcon plusIcon = new ImageIcon("plusIcon.png");
         Image image = plusIcon.getImage();
         Image newImg = image.getScaledInstance(25, 25,  Image.SCALE_SMOOTH);
         plusIcon = new ImageIcon(newImg);
@@ -92,7 +92,7 @@ public class Lista extends JFrame {
             }
         );
 
-        ImageIcon xIcon = new ImageIcon(getClass().getClassLoader().getResource("xIcon.png"));
+        ImageIcon xIcon = new ImageIcon("xIcon.png");
         Image image2 = xIcon.getImage();
         Image newImg2 = image2.getScaledInstance(25, 25,  Image.SCALE_SMOOTH);
         xIcon = new ImageIcon(newImg2);

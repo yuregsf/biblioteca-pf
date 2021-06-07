@@ -59,7 +59,7 @@ public class GUI {
         titlePanel.setMaximumSize(new Dimension(Short.MAX_VALUE,0));
         titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 
-        ImageIcon logo = new ImageIcon(GUI.class.getClassLoader().getResource("bookIcon.png"));
+        ImageIcon logo = new ImageIcon("bookIcon.png");
         Image image = logo.getImage();
         Image newImg = image.getScaledInstance(75, 75,  Image.SCALE_SMOOTH);
         logo = new ImageIcon(newImg);
