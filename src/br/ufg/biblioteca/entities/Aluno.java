@@ -64,4 +64,8 @@ public class Aluno extends Pessoa {
         Object[] array = {getNome(), getMatricula(), telefone, email};
         return array;
     }
+
+    public void addEmprestimo(Emprestimo emp){
+        this.emprestimos.add(emp);
+    }
 }

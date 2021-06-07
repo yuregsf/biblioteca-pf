@@ -8,11 +8,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Classe abstrata que representa um formulario na aplicação.
- * Uma pessoa possui atributos.
- */
-
 public abstract class Formulario extends JFrame {
 
     String[] atributos;
@@ -23,18 +18,14 @@ public abstract class Formulario extends JFrame {
 
     public Formulario(Lista lista, String[] atributos) {
         
-        /**
-         * inicializa uma nova janela e o panel principal
-         */
+        // Inicializando a nova janela e o panel principal
         super("Cadastrar " + lista.classe);
         this.atributos = atributos;        
 
         JPanel formularioPanel = new JPanel();
         formularioPanel.setLayout(new BoxLayout(formularioPanel, BoxLayout.Y_AXIS));
 
-        /**
-         * Titulo
-         */
+        // Titulo
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new GridLayout(2,1));
         titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -49,9 +40,7 @@ public abstract class Formulario extends JFrame {
 
         formularioPanel.add(titlePanel);
 
-        /**
-         * Adicionando os campos de cada atributo
-         */
+        // Adicionando os campos de cada atributo
         for(int i = 0; i < atributos.length; i++) {
 
             JPanel atributoPanel = new JPanel();
@@ -73,9 +62,7 @@ public abstract class Formulario extends JFrame {
             formularioPanel.add(atributoPanel);
         }
 
-        /**
-         * Botoes
-         */
+        // Botoes
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 
@@ -95,9 +82,7 @@ public abstract class Formulario extends JFrame {
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 
-                    /**
-                     * Junta-se todos os dados inseridos
-                     */
+                    // Junta-se todos os dados inseridos
                     ArrayList<String> texts = new ArrayList<String>();
 
                     for(int i = 0; i < atributosText.size(); i++) {
@@ -106,15 +91,11 @@ public abstract class Formulario extends JFrame {
                         texts.add(text);
                     }
 
-                    /**
-                     * Checa se o texto esta valido
-                     */
+                    // Checa se o texto esta valido
                     if(checkEmpty() && validateText()) {
                         Object[] data = texts.toArray();
 
-                        /**
-                         * Cria a nova classe e a armazena
-                         */
+                        // Cria a nova classe e a armazena
                         createData(data);
                         try {
                             Data.saveData();
@@ -122,9 +103,7 @@ public abstract class Formulario extends JFrame {
                             e1.printStackTrace();
                         }
 
-                        /**
-                         * Adiciona a nova linha com os dados inseridos e fecha a janela do formulario
-                         */
+                        // Adiciona a nova linha com os dados inseridos e fecha a janela do formulario
                         lista.tableModel.addRow(data);
                         dispose();
                     }
@@ -132,9 +111,7 @@ public abstract class Formulario extends JFrame {
             }
         );
         
-        /**
-         * Adicionando os botoes e o panel principal
-         */
+        // Adicionando os botoes e o panel principal
         buttonsPanel.add(button1);
         buttonsPanel.add(button2);
 
@@ -142,9 +119,7 @@ public abstract class Formulario extends JFrame {
         
         add(formularioPanel);
 
-        /**
-         * Preparando a janela
-         */
+        // Preparando a janela
         pack();
         setMinimumSize(getSize());
         setVisible(true);
@@ -152,10 +127,7 @@ public abstract class Formulario extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-    /**
-     * Checa se algum campo nao foi preenchido
-     * @return [Insira um valor caso um campo nao esteja preenchido]
-     */
+    // Checa se algum campo nao foi preenchido
     private boolean checkEmpty() {
         boolean ok = true;
 

@@ -35,6 +35,8 @@ public class Emprestimo implements Serializable {
         this.aluno = aluno;
         this.funcionario = funcionario;
         this.livro = livro;
+        aluno.addEmprestimo(this);
+        livro.diminuirQuantidade();
     }
 
     // Nao foi utilizado/implementado
@@ -42,7 +44,7 @@ public class Emprestimo implements Serializable {
     /**
      *
      * @hidden
-     * @param data
+     * @param data Data em que o exemplar foi devolvido
      */
     public void devolverExemplar(Calendar data) {
         livro.aumentarQuantidade();
@@ -53,7 +55,7 @@ public class Emprestimo implements Serializable {
     // Nao foi utilizado/implementado
 
     /**
-     * @return
+     * @return Retorna se o empréstimo está concluído.
      */
     public boolean isConcluido() {
         return concluido;
@@ -80,5 +82,18 @@ public class Emprestimo implements Serializable {
      */
     public Livro getLivro() {
         return livro;
+    }
+
+    @Override
+    public String toString() {
+        return "Emprestimo{" +
+                "dataEmprestimo=" + dataEmprestimo +
+                ", previsaoDevolucao=" + previsaoDevolucao +
+                ", dataDevolucao=" + dataDevolucao +
+                ", concluido=" + concluido +
+                ", livro=" + livro +
+                ", aluno=" + aluno +
+                ", funcionario=" + funcionario +
+                '}';
     }
 }

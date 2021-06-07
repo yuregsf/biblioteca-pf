@@ -117,3 +117,8 @@ hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,java
 
+/.attach_pid13021
+/.attach_pid13090
+/.attach_pid13355
+/.attach_pid13605
+/.attach_pid15010
