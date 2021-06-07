@@ -1,6 +1,7 @@
 package br.ufg.biblioteca.views;
 
 import br.ufg.biblioteca.entities.Data;
+import br.ufg.biblioteca.exceptions.AlunoExistenteException;
 
 import java.awt.event.*;
 import java.io.IOException;
@@ -101,6 +102,9 @@ public abstract class Formulario extends JFrame {
                             Data.saveData();
                         } catch (IOException e1) {
                             e1.printStackTrace();
+                        } catch (AlunoExistenteException ae){
+                            JOptionPane.showMessageDialog(null, ae.getMessage());
+                            ae.printStackTrace();
                         }
 
                         // Adiciona a nova linha com os dados inseridos e fecha a janela do formulario
