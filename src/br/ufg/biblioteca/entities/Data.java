@@ -30,7 +30,20 @@ public final class Data {
 
             alunos = (ArrayList<Aluno>)obj;
  
-        } catch (Exception ex) {
+        }
+        catch(FileNotFoundException fn){
+            try{
+                FileOutputStream fop = new FileOutputStream("alunos.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fop);
+                oos.writeObject(alunos);
+                oos.close();
+
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
@@ -41,8 +54,21 @@ public final class Data {
             objectIn.close();
 
             funcionarios = (ArrayList<Funcionario>)obj;
- 
-        } catch (Exception ex) {
+
+        }
+        catch(FileNotFoundException fn){
+            try{
+                FileOutputStream fop = new FileOutputStream("funcionarios.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fop);
+                oos.writeObject(funcionarios);
+                oos.close();
+
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
@@ -54,7 +80,20 @@ public final class Data {
 
             livros = (ArrayList<Livro>)obj;
  
-        } catch (Exception ex) {
+        }
+        catch(FileNotFoundException fn){
+            try{
+                FileOutputStream fop = new FileOutputStream("livros.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fop);
+                oos.writeObject(livros);
+                oos.close();
+
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
@@ -66,7 +105,20 @@ public final class Data {
 
             autores = (ArrayList<Autor>)obj;
  
-        } catch (Exception ex) {
+        }
+        catch(FileNotFoundException fn){
+            try{
+                FileOutputStream fop = new FileOutputStream("autores.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fop);
+                oos.writeObject(autores);
+                oos.close();
+
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
@@ -78,7 +130,20 @@ public final class Data {
 
             emprestimos = (ArrayList<Emprestimo>)obj;
  
-        } catch (Exception ex) {
+        }
+        catch(FileNotFoundException fn){
+            try{
+                FileOutputStream fop = new FileOutputStream("emprestimos.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fop);
+                oos.writeObject(emprestimos);
+                oos.close();
+
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
     }
